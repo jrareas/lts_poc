@@ -1,0 +1,18 @@
+version: '2'
+services:
+  surveys:
+    container_name: surveys
+    build:
+      context: .
+      target: debug
+    command: "dotnet run"
+    working_dir: /app
+    volumes:
+      - ./apps/surveys-api:/app/
+    networks:
+      - surveys-network
+    ports:
+      - 5001:5001
+networks:
+  surveys-network:
+    driver: bridge
