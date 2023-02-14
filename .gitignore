@@ -1,2 +1,3 @@
 apps/surveys-api/bin/
 apps/surveys-api/obj/
+node_modules

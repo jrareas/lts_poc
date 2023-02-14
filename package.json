@@ -1,0 +1,17 @@
+{
+  "name": "surveys-ui",
+  "version": "1.0.0",
+  "description": "Surveys UI",
+  "main": "apps/survey-ui/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jose Areas",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0"
+  }
+}
