@@ -1,7 +1,7 @@
 version: '2'
 services:
-  surveys:
-    container_name: surveys
+  surveys-api:
+    container_name: surveys-api
     build:
       context: .
       target: debug
@@ -13,6 +13,19 @@ services:
       - surveys-network
     ports:
       - 5001:5001
+  surveys-ui:
+    container_name: surveys-ui
+    build:
+      context: .
+      target: angular
+    command:  "ng serve --host=0.0.0.0 --disable-host-check"
+    working_dir: /app/surveys-ui-angular
+    volumes:
+      - ./apps/surveys-ui-angular:/app/
+    networks:
+      - surveys-network
+    ports:
+      - 4200:4200
 networks:
   surveys-network:
     driver: bridge

@@ -20,3 +20,6 @@ CMD dotnet run
 
 FROM debug as base
 CMD dotnet /app/dist/surveys-api.dll
+
+FROM node AS angular
+RUN npm install -g @angular/cli

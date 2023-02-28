@@ -47,6 +47,10 @@ cd ~/Projects/<project_folder>
 docker-compose up
 ```
 
-*** Accessing the Application ***
+*** Accessing the API ***
 
 https://localhost:5001/hello
+
+*** Accessing the Frontend Stub ***
+
+http://localhost:4200
