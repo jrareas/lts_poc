@@ -19,6 +19,8 @@ jobs:
       run: npm install
     - name: Install Angular CLI
       run: npm install -g @angular/cli > /dev/null   
+    - name: Install eslint cli
+      run: npm install eslint -DE
     - name: Run linters
       uses: wearerequired/lint-action@v1
       with:
