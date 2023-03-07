@@ -54,3 +54,22 @@ https://localhost:5001/hello
 *** Accessing the Frontend Stub ***
 
 http://localhost:4200
+
+
+*** install angular modules ***
+First get a bash shell with your node environment
+
+```
+docker run --rm -ti -v `pwd`:/app -w /app node:latest bash
+```
+When a bash prompt opens up, install angular client as below:
+
+```
+npm install -g @angular/cli
+```
+
+Install module:
+
+```
+ng generate module app-routing --flat --module=app
+```
