@@ -1,0 +1,32 @@
+name: Lint UI
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+    branches: [develop, main]
+jobs:
+  run-linters:
+    name: Run linters
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clean Workspace
+      uses: AutoModality/action-clean@v1
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Install node
+      uses: actions/setup-node@v1 #this will install Node and npm on Ubuntu
+      with:
+        node-version: '19.x'
+    - name: Install dependencies
+      run: npm ci
+    - name: Install Angular CLI
+      run: npm install -g @angular/cli > /dev/null
+    - name: Install eslint cli
+      run: npm install eslint -DE
+    - name: Run linters
+      uses: wearerequired/lint-action@v1
+      with:
+        github_token: ${{ secrets.github_token }}
+      # Enable linters
+        eslint: true
+        prettier: true
