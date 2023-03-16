@@ -60,7 +60,7 @@ http://localhost:4200
 First get a bash shell with your node environment
 
 ```
-docker run --rm -ti -v `pwd`:/app -w /app node:latest bash
+docker run --rm -ti -v `pwd`:/app -w /apps/surveys-ui-angular/ node:latest bash
 ```
 When a bash prompt opens up, install angular client as below:
 
