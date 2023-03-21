@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DrrComponent } from './drr/drr.component';
 import { RouterModule, Routes } from '@angular/router';
+import { CardComponent } from './components/card/card.component';
 
 const appRoutes: Routes = [
   { path: 'drr', component: DrrComponent },
@@ -13,7 +14,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    DrrComponent
+    DrrComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
