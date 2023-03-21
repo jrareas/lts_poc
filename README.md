@@ -41,9 +41,13 @@ git clone <path to the project>
 ```
 
 ***Running the application***
-
+Before you run the application you need to make sure dependencies exist in your local machine as they will be mapped to the container. For that run:
 ```
 cd ~/Projects/<project_folder>
+make npm-instal
+```
+Now you can bring up the docker containers as follow
+```
 docker-compose up
 ```
 
@@ -70,6 +74,6 @@ npm install -g @angular/cli
 
 Install module:
 
-```
+```ng generate component 
 ng generate module app-routing --flat --module=app
 ```
