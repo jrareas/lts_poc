@@ -77,3 +77,12 @@ Install module:
 ```ng generate component 
 ng generate module app-routing --flat --module=app
 ```
+
+*** Create a new Component ***
+We can create components in 2 different ways:
+*in the app/components - for general components
+*in the app/modules/<module name>/components - for components to be used by a specific module
+```
+cd <folder as above>
+ng generate component <component name>
+```
