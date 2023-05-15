@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import "@abgov/web-components";
@@ -14,11 +14,27 @@ import { ChargeAccountModule } from './modules/charge_account/charge-account.mod
 import { PageHeaderComponent } from './components/page-header/page-header.component';
 import { LoginAccountComponent } from './components/login-account/login-account.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
 const appRoutes: Routes = [
   { path: 'drr', component: DrrComponent },
   { path: 'charge_account', component: ChargeAccountModule },
 ];
+
+function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
+    keycloak.init({
+      config: {
+        url: 'http://localhost:8080/auth',
+        realm: 'master',
+        clientId: 'angular-client',
+      },
+      initOptions: {
+        onLoad: 'login-required',  // allowed values 'login-required', 'check-sso';
+        flow: "standard"          // allowed values 'standard', 'implicit', 'hybrid';
+      },
+    });
+}
 
 @NgModule({
   declarations: [
@@ -39,8 +55,16 @@ const appRoutes: Routes = [
     ),
     ChargeAccountModule,
     AngularComponentsModule,
+    KeycloakAngularModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService],
+    }
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
