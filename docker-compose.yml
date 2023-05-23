@@ -13,6 +13,7 @@ services:
       - surveys-network
     ports:
       - 5001:5001
+      - 5000:5000
   surveys-ui:
     container_name: surveys-ui
     build:
@@ -26,27 +27,28 @@ services:
       - surveys-network
     ports:
       - 4200:4200
-  # adminer:
-  #   image: adminer
-  #   restart: always
-  #   ports:
-  #     - 8080:8080
-  #   networks:
-  #       - surveys-network
-  #   depends_on:
-  #     postgres:
-  #       condition: service_started
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080
+    networks:
+        - surveys-network
+    depends_on:
+      postgres:
+        condition: service_started
   postgres:
     container_name: postgres
     image: postgres
     environment:
       - "POSTGRES_PASSWORD=anysecret"
       - "POSTGRES_HOST_AUTH_METHOD=trust"
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
     networks:
         - surveys-network
   keycloak:
     image: jboss/keycloak
-    container_name: keycloak
     ports:
       - 8080:8080
     environment:
