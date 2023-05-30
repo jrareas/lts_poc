@@ -6,5 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./navigation-menu.component.sass']
 })
 export class NavigationMenuComponent {
-
+  
+  menu_options = [
+    {
+      "label": "Menu Item 1",
+      "link" : "/"
+    },
+    {
+      "label": "Menu Item 2",
+      "link" : "/"
+    },
+    {
+      "label": "Menu Item 3",
+      "link" : "/"
+    }
+  ]
 }

@@ -15,6 +15,7 @@ import { PageHeaderComponent } from './components/page-header/page-header.compon
 import { LoginAccountComponent } from './components/login-account/login-account.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { MenuItemComponent } from './components/menu-item/menu-item.component';
 
 const appRoutes: Routes = [
   { path: 'drr', component: DrrComponent },
@@ -33,6 +34,14 @@ function initializeKeycloak(keycloak: KeycloakService) {
         onLoad: 'login-required',  // allowed values 'login-required', 'check-sso';
         flow: "standard"          // allowed values 'standard', 'implicit', 'hybrid';
       },
+    })
+    .then(function(authenticated) {
+      // alert(authenticated ? 'authenticated' : 'not authenticated');
+      if(authenticated){
+        // console.log(keycloak.getUsername());
+        // console.log(keycloak.getUserRoles());
+      }
+      
     });
 }
 
@@ -44,7 +53,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
     ChargeAccountComponent,
     PageHeaderComponent,
     LoginAccountComponent,
-    NavigationMenuComponent
+    NavigationMenuComponent,
+    MenuItemComponent
   ],
   imports: [
     BrowserModule,
